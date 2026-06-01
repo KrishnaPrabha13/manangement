@@ -26,8 +26,9 @@ public class UserServiceImp implements UserService{
         u.setPhoneno(user.getPhoneno());
         u.setEmailid(user.getEmailid());
         u.setGender(user.getGender());
+        u.setAddress(user.getAddress());
         User saved = userRepo.save(u);
-        return  new UserResponse(saved.getUserid(), saved.getName(), saved.getPhoneno(), saved.getEmailid(), saved.getGender());
+        return  new UserResponse(saved.getUserid(), saved.getName(), saved.getPhoneno(), saved.getEmailid(), saved.getGender(),saved.getAddress());
 
     }
 
@@ -39,7 +40,8 @@ public class UserServiceImp implements UserService{
                         u.getName(),
                         u.getPhoneno(),
                         u.getEmailid(),
-                        u.getGender()))
+                        u.getGender(),
+                        u.getAddress()))
                 .collect(Collectors.toList());
     }
 
@@ -47,7 +49,7 @@ public class UserServiceImp implements UserService{
         logger.info("Get user by id");
 
         User user =  userRepo.findById(userid).orElseThrow(()-> new RuntimeException("User not found by " +userid));
-        return  new UserResponse(user.getUserid(), user.getName(),user.getPhoneno(), user.getEmailid(), user.getGender());
+        return  new UserResponse(user.getUserid(), user.getName(),user.getPhoneno(), user.getEmailid(), user.getGender(),user.getAddress());
     }
 
 
@@ -60,7 +62,8 @@ public class UserServiceImp implements UserService{
                         user.getName(),
                         user.getPhoneno(),
                         user.getEmailid(),
-                        user.getGender()
+                        user.getGender(),
+                        user.getAddress()
                 ))
                 .toList();
     }
@@ -88,7 +91,8 @@ public class UserServiceImp implements UserService{
                 saved.getName(),
                 saved.getPhoneno(),
                 saved.getEmailid(),
-                saved.getGender()
+                saved.getGender(),
+                saved.getAddress()
         );
 
     }

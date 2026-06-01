@@ -26,6 +26,9 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    private String address;
+
     public Long getUserid() {
         return userid;
     }
@@ -64,5 +67,13 @@ public class User {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
